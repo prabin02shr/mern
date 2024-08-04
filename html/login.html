@@ -5,38 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
+
+        .login_page{
+            display: flex;
+            justify-content: center;
+            margin-top: 200px;
+        }
+        
         .login{
             display: flex;
             flex-direction: column;
             border: 1px solid gray;
-            align-content: center;
-            
+            /* align-content: center; */
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            padding: 24px; 
+            background-image: url(../assests/images/images.jfif);
+            background-size: cover;
+        }
+
+        .login_save{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
     </style>
 </head>
 <body>
-    <div class="login">
-        <h1>Login</h1>
-        <div>
-            <input type="text" placeholder="Username"><br>
-            <input type="password" placeholder="Password">
+    <section class="login_page">
+        <div class="login">
+            <h1>Login</h1>
+            <div>
+                <input type="text" placeholder="Username"><br>
+                <input type="password" placeholder="Password">
+            </div>
+            <div class="login_save">
+                <span>
+                    <input type="checkbox" name="" id="remember_me">
+                    <label for="remember_me">Remember me</label>
+                </span><br>
+                <span>
+                    <p><a href="#">Forgot password</a></p>
+                </span>
+            </div>
+            <div>
+                <input type="submit" value="Login">
+            </div>
+            <div>
+                <p>Don't have an account <a href="#">Register here</a></p>
+            </div>
         </div>
-        <div>
-            <span>
-                <input type="checkbox" name="" id="remember_me">
-                <label for="remember_me">Remember me</label>
-            </span><br>
-            <span>
-                <p><a href="#">Forgot password</a></p>
-            </span>
-        </div>
-        <div>
-            <input type="submit" value="Login">
-        </div>
-        <div>
-            <p>Don't have an account <a href="#">Register here</a></p>
-        </div>
-    </div>
+    </section>
+
 </body>
 </html>
