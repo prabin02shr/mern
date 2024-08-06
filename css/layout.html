@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <title>Layout</title>
+        <style>
+            *{
+                margin: 0;
+            }
+
+            .header{
+                width: 100%;
+                height: 75px;
+                background-color: antiquewhite;
+                align-content: center;
+                
+            }
+
+            .main{
+                width: 100%;
+                height: 800px;
+                background-color: aqua;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .left{
+                width: 25%;
+                height: 800px;
+                background-color: azure;
+            }
+
+            .right{
+                width: 75%;
+                height: 800px;
+                background-color: bisque
+            }
+
+            .right_top{
+                width: 100%;
+                height: 400px;
+                background-color: violet ;
+            }
+
+            .right_bottom{
+                display: flex;
+                width: 100%;
+                height: 400px;
+                background-color: aquamarine;
+            }
+
+            .right_bottom_left{
+                width: 50%;
+                height: 400px;
+                background-color: burlywood;
+            }
+
+            .right_bottom_right{
+                width: 50%;
+                height: 400px;
+                background-color: goldenrod;
+            }
+
+            .footer{
+                width: 100%;
+                height: 83px;
+                background-color: brown;
+            }
+
+            ul{
+                list-style: none;
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <ul>
+                <li>Home</li>
+                <li>Product</li>
+                <li>About</li>
+                <li>Contact</li>
+                <li>Help</li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="left">Left division</div>
+            <div class="right">
+                <div class="right_top">Right top division</div>
+                <div class="right_bottom">
+                    <div class="right_bottom_left">right bottom left division</div>
+                    <div class="right_bottom_right">right bottom right division</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">Footer</div>
+    </body>
+</html>
