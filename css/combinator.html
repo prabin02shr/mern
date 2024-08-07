@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combinator</title>
+    <!-- 
+    types of combinator
+    1. grouping combinator (,)
+    2. descendent combinator (space)
+    3. child combinator (>)
+    4. general sibling combinator
+    5. adjacent sibling combinator
+    -->
+
+    <style>
+
+        /* grouping combinator */
+        h1, .demo, p{
+            color: red;
+        }
+
+        /* descendent combinator */
+        .container div{
+            color: green;
+        }
+
+        /* child combinator */
+        .parent > .child{
+            color: blueviolet;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <h1>Heading</h1>
+    <div class="demo">Demo</div>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor reiciendis possimus nemo quidem dignissimos neque laboriosam ad doloremque culpa, deserunt numquam commodi. Aliquid sunt molestiae consectetur ab nobis quam dolorum?</p>
+
+    <div class="container">
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo accusantium maxime cumque temporibus, nulla dignissimos ut numquam quod iusto est cupiditate id quasi aliquid consequuntur quaerat quis beatae at vel.</div>
+    </div>
+    
+    <div class="parent">
+        <div class="child">child 1</div>
+        <div class="child">child 2</div>
+        <div class="child">child 3
+            <div class="grandchild">grand child 1</div>
+            <div class="grandchild">grand child 2</div>
+            <div class="grandchild">grand child 3</div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
