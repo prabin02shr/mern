@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+        }
+
+        h1{
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        form{
+            width: 50%;
+            margin: auto;
+            background-color: whitesmoke;
+            padding: 16px;
+            border: 1px solid sandybrown;
+            border-radius: 16px;
+        }
+
+        label{
+            width: 25%;
+            display: inline-block;
+        }
+        
+        select,
+        input,
+        .custom_div,
+        textarea{
+            width: 70%;
+            margin-top: 10px;
+            padding: 10px;
+        }
+
+        input[type="file"]{
+            border: 1px solid grey;
+        }
+
+        .custom_div{
+            display: inline-flex;
+            gap: 24px;
+            background-color: aqua;
+        }
+        .custom_sub_div{
+            display: inline-flex;
+            gap: 10px;
+        }
+
+        input[type="reset"],
+        input[type="submit"]
+        {
+            width: 100px;
+        }
+
+        .btn_center{
+            text-align: center;
+        }
+
+        p{
+            margin-top: 10px;
+        }
+
+        a{
+            text-decoration: none;
+        }
+        input[type="reset"]:hover,
+        input[type="submit"]:hover{
+            cursor: pointer;
+            background-color: aquamarine;
+        }
+
+    </style>
+</head>
+<body>
+        <h1>Register Here</h1>
+        <!-- action => attribute, value -->
+         <!-- method => get(default method), post -->
+        <form action="" method="" target="_blank">
+            <!-- attribute, value -->
+             <!-- for, id -->
+              <!-- type: text, password, date, submit, email, file, number, search, reset -->
+            <label for="username" >Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter Your Username">
+            
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            
+            <label for="email">email</label>
+            <input type="text" id="email" name="email">
+            
+            <label for="">dob</label>
+            <input type="date">
+            
+            
+            <label for="">phone</label>
+            <input type="number">
+            
+            <label for="">email</label>
+            <input type="email">
+            
+            <label for="">profile</label>
+            <input type="file">
+            
+            <label for="">search</label>
+            <input type="search">
+            
+            <label for="">gender</label>
+            <span class="custom_div">
+                <span class="custom_sub_div">
+                    <input type="radio" name="gender">
+                    <label for="">male</label>
+                </span>
+                <span class="custom_sub_div">
+                    <input type="radio" name="gender">
+                    <label for="">female</label>
+                </span>
+                <span class="custom_sub_div">
+                    <input type="radio" name="gender">
+                    <label for="">others</label>
+                </span>
+   
+            </span>
+
+            
+            <label for="">skills</label>
+            <span class="custom_div">
+                <input type="checkbox">
+                <label for="">hardware networking</label>
+                <input type="checkbox">
+                <label for="">data entry</label>
+                <input type="checkbox">
+                <label for="">data validation</label>
+            </span>
+ 
+            
+            <label for="">country</label>
+            <!-- <input type="text"> -->
+            <select name="" id="">
+                <option value="">choose your country</option>
+                <option value="napal">Nepal</option>
+                <option value="india">India</option>
+                <option value="japan">Japan</option>
+            </select>
+            
+            <label for="">description</label>
+            <textarea name="" id="" rows="10" cols="50"></textarea>           
+    
+            <!-- <input type="text"> -->
+             <div class="btn_center">
+                <input type="reset">
+                <input type="submit" value="Register">
+                <p>Already Have an Account? <a href="login.html">Login Here</a></p>
+             </div>
+
+
+        </form>
+</body>
+</html>
