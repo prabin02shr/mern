@@ -38,14 +38,14 @@
         }
 
         .right_top {
-            width: 75vw;
+            /* width: 75vw; */
             height: 40vh;
             background-color: violet;
         }
 
         .right_bottom {
             display: flex;
-            width: 75vw;
+            /* width: 75vw; */
             height: 40vh;
             background-color: aquamarine;
         }
@@ -148,10 +148,108 @@
         #smartphone {
             top: -100%;
         }
+
+        select{
+            display: none;
+        }
+
+        .list{
+            display: none;
+        }
+
+        /* 600px */
+        @media screen and (max-width:600px){
+            select{
+                display: block;
+                width: 100%;
+                height: 50px;
+                text-align: center;
+                background-color: aquamarine;                
+            }
+            
+            .header{display: none;}
+
+            .main{
+                flex-direction: column;
+                width: 100%;
+                height: 80vh;
+            }
+            .left{
+                width: 100%;
+                height: 20vh;
+            }
+            .right{
+                flex-direction: column;
+                width: 100%;
+                height: 60vh;
+            }
+            .right_bottom{
+                flex-direction: column;
+                width: 100%;
+                height: 30vh;
+            }
+            .right_bottom_left,
+            .right_bottom_right{
+                width: 100%;
+                height: 30vh;
+            }
+
+            .footer{
+                height: 10vh;
+            }
+        }
+
+        @media screen and (min-width:600px) and (max-width:900px) {
+            .list{
+                display: block;
+            }
+            .header{
+                display: none;
+            }
+            .main{
+                flex-direction: column;
+                width: 100%;
+            }
+            .left{
+                width: 100%;
+                height: 800px;
+            }
+            .right{
+                display: flex;
+                width: 100%;
+                height: 100%;
+                
+            }
+            .right_top{
+                width: 50%;
+                height: 100%;
+            }
+            .right_bottom{
+                flex-direction: column;
+                height: 100%;
+            }
+            
+        }
+
+
     </style>
 </head>
 
 <body>
+<div class="list">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+      </svg>
+</div>
+
+    <select name="" id="">
+        <Option>Home</Option>
+        <Option>About</Option>
+        <Option>Contact us</Option>
+        <Option>Help</Option>
+        </div>
+    
+    </select>
     <div class="header">
         <ul class="page">
             <li>Home</li>
