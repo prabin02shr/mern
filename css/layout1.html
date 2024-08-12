@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .header{
+            background-color: antiquewhite;
+            width: 100%;
+            height: 10vh;
+            align-content: center;
+        }
+
+        .header>ul{
+            list-style: none;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        li:hover{
+            cursor: pointer;
+            color: red;
+            border-bottom: 1px solid red;
+
+        }
+        .category, .sub_category{
+            display: none;
+        }
+        
+        .category li, .sub_category li{
+            position: relative;
+            padding: 12px;
+        }
+
+        .page li{
+            list-style: none;
+        }
+        
+        .page li:hover .category{
+            display: block;
+            background-color: aqua;
+            position: absolute;
+        }
+
+        .category li:hover .sub_category{
+            display: block;
+            position: absolute;
+            left: 100%;
+            top: 0;            
+            background-color: aqua;
+        }
+
+        .main{
+            display: flex;
+        }
+
+        .left{
+            background-color: aquamarine;
+            height: 80vh;
+            width: 25%;
+        }
+
+        .right{
+            background-color: aqua;
+            height: 80vh;
+            width: 75%;
+        }
+
+        .right_top{
+            background-color: azure;
+            height: 40vh;
+        }
+
+        .right_bottom{
+            background-color: goldenrod;
+            display: flex;
+            height: 40vh;
+        }
+
+        .right_bottom_left{
+            background-color: blueviolet;
+            width: 50%;
+        }
+
+        .right_bottom_right{
+            background-color: blue;
+            width: 50%;
+        }
+
+        .footer{
+            background-color: bisque;
+            width: 100%;
+            height: 10vh;
+            align-content: center;
+        }
+
+        .list{
+            display: none;
+        }
+
+        @media screen and (max-width:600px){
+            .list{
+                display: block;
+                height: 10vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+            .list:hover{
+                cursor: pointer;
+                color: red;
+            }
+            .header{
+                display: none;
+            }
+            .main{
+                flex-direction: column;
+                width: 100%;
+                height: 80vh;
+            }
+            .left{
+                flex-direction: column;
+                width: 100%;
+                height: 40vh;
+            }
+            .right{
+                width: 100%;
+                height: 40vh;
+            }
+            .right_top{
+                height: 20vh;
+            }
+            .right_bottom{
+                flex-direction: column;
+                width: 100%;
+                height: 20vh;
+            }
+            .right_bottom_left,
+            .right_bottom_right{
+                width: 100%;
+                height: 10vh;
+            }
+        }
+
+        @media screen and (min-width:600px) and (max-width:900px) {
+
+            .main{
+                flex-direction: column;
+                width: 100%;
+                height: 80vh;
+            }
+            .left{
+                width: 100%;
+                height: 40vh;
+            }
+            .right{
+                display: flex;
+                width: 100%;
+                height: 40vh;
+                
+            }
+            .right_top{
+                width: 50%;
+                height: 40vh;
+            }
+            .right_bottom{
+                flex-direction: column;
+                width: 50%;
+            }
+            .right_bottom_left,
+            .right_bottom_right{
+                height: 20vh;
+                width: 100%;
+            }
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="list">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+          </svg>
+    </div>
+     <div class="header">
+        <ul class="page">
+            <li>Home</li>
+            <li>Product
+                <ul class="category">
+                    <li>Computers
+                        <ul class="sub_category">
+                            <li>Dell</li>
+                            <li>Msi</li>
+                            <li>Lenovo</li>
+                            <li>Acer</li>
+                        </ul>
+                    </li>
+                    <li>Smartphones
+                        <ul class="sub_category" id="smartphone">
+                            <li>Samsung</li>
+                            <li>Xiaomi</li>
+                            <li>Apple</li>
+                            <li>Huwaei</li>
+                        </ul>
+                    </li>
+                    <li>Cameras</li>
+                    <li>Others</li>
+                </ul>
+            </li>
+            <li>About</li>
+            <li>Contact</li>
+            <li>Help</li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="left">Left division</div>
+        <div class="right">
+            <div class="right_top">Right top division</div>
+            <div class="right_bottom">
+                <div class="right_bottom_left">right bottom left division</div>
+                <div class="right_bottom_right">right bottom right division</div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Footer</div>
+</body>
+</html>
