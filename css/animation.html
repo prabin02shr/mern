@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .container{
+            width: 300px;
+            height: 300px;
+            background-color: aquamarine;
+            animation: Anim 3s ease 2s infinite backwards normal;
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+
+        }
+        
+        @keyframes myAnimation {
+            from {
+                
+            }
+            to {
+                transform: translate(300px, 300px);
+                background-color: antiquewhite;
+                
+            }
+        }
+
+        @keyframes Anim {
+            0%{
+
+            }
+            25%{
+                transform: translate(1600px);
+                background-color: azure;
+            }
+            50%{
+                transform: translate(1600px, 650px);
+                background-color: beige;
+                background-image: url(../assests/images/download\ \(1\).jfif);
+            }
+            75%{
+                transform: translateY(650px);
+                background-color: bisque;
+                background-image: url(../assests/images/images.jfif);
+            }
+            100%{
+
+            }
+            
+        }
+
+    </style>
+    
+</head>
+<body>
+    <div class="container"></div>
+</body>
+</html>
