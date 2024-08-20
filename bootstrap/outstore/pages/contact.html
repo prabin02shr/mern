@@ -66,29 +66,37 @@
     <div class="row">
       <div class="col-md-5 shadow-lg p-5">
         <h1 class="text-center text-decoration-underline text-muted">Contact Address</h1>
-        <h4>Our Store</h4>
-        <h4><i class="bi bi-geo-alt-fill"></i>Kathmandu, Nepal</h4>
-        <h5>01-4598651</h5>
-        <h5>Ourstore@gmail.com</h5>
+        <h4 class="mb-3">Our Store</h4>
+        <h5>
+          <span class="pe-2"><i class="bi bi-geo-alt-fill"></i></span>
+          <span>Kathmandu, Nepal</span>
+        </h5>
+        <h5>
+          <span class="pe-2"><i class="bi bi-telephone-fill"></i></span>
+          <span>01-4598651</span>
+        </h5>
+        <h5>
+          <span class="pe-2"><i class="bi bi-envelope-fill"></i></span>
+          <span>Ourstore@gmail.com</span>
+        </h5>
       </div>
       <div class="col-md-1"></div>
       <div class="col-md-6 shadow-lg p-5">
         <h1 class="text-center text-decoration-underline text-muted">Contact Form</h1>
         <form action="">
           <label for="email">Email<sup class="text-danger fs-6">*</sup></label>
-          <input type="email" id="email" placeholder="Email" class="form-control form-control-lg" required>
+          <input type="email" id="email" placeholder="example@gmail.com" class="form-control form-control-lg mb-3" required>
+
+          <label for="subject">Subjet<sup class="text-danger fs-6">*</sup></label>
+          <input type="subject" id="subject" placeholder="subject" class="form-control form-control-lg mb-3" required>
+
+          <label for="message">Message<sup class="text-danger fs-6">*</sup></label>
+          <textarea type="text" id="message" placeholder="write your message" class="form-control form-control-lg mb-3" required></textarea>
+
+          <div class="text-center">
+            <div class="btn btn-warning mt-2">Submit</div>
+          </div>
         </form>
-        <form action="">
-          <label for="subject">Subject<sup class="text-danger">*</sup></label>
-          <input type="text" id="subject" placeholder="Subject" class="form-control form-control-lg" required>
-          <div class="btn btn-warning">Submit</div>
-        </form>
-        <form action="">
-          <label for="message">Message<sup class="text-danger">*</sup></label>
-          <input type="text-area" id="message" placeholder="Message" class="form-control form-control-lg" required>
-          <div class="btn btn-warning">Submit</div>
-        </form>
-        
       </div>
     </div>
   </div>
@@ -147,12 +155,9 @@
       <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
         <p>&copy; 2024 Company, Inc. All rights reserved.</p>
         <ul class="list-unstyled d-flex">
-          <li class="ms-3"><a class="link-body-emphasis" href="https://www.twitter.com/"><i
-                class="bi bi-twitter-x"></i></a></li>
-          <li class="ms-3"><a class="link-body-emphasis" href="https://www.instagram.com/"><i
-                class="bi bi-instagram"></i></a></li>
-          <li class="ms-3"><a class="link-body-emphasis" href="https://www.facebook.com/"><i
-                class="bi bi-facebook"></i></a></li>
+          <li class="ms-3"><a class="link-body-emphasis" href="https://www.twitter.com/"><i class="bi bi-twitter-x"></i></a></li>
+          <li class="ms-3"><a class="link-body-emphasis" href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a></li>
+          <li class="ms-3"><a class="link-body-emphasis" href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a></li>
         </ul>
       </div>
     </footer>
