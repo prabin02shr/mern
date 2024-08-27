@@ -10,11 +10,26 @@
     <script>
       var number1 = Number(prompt("enter first number"));
       var symbol = prompt("enter symbol");
-      var number1 = Number(prompt("enter second number"));
-      document.write(typeof number1);
+      var number2 = Number(prompt("enter second number"));
+      // document.write(typeof number1);
       if (symbol === "+") {
+        document.write(number1 + number2);
       } else if (symbol === "-") {
+        document.write(number1 - number2);
+      } else if (symbol === "*") {
+        document.write(number1 * number2);
+      } else if (symbol === "/") {
+        document.write(number1 / number2);
+      } else if (symbol === "%") {
+        document.write((number2 / number1) * 100, "%");
+      } else if (symbol === "") {
+        document.write("no symbol");
+      } else if (symbol === ">") {
+        document.write(number1 > number2);
+      } else if (symbol === "<") {
+        document.write(number1 < number2);
       } else {
+        document.write("invalid");
       }
     </script>
   </body>
