@@ -30,7 +30,7 @@ num % n1 == 0 && num % n2 == 0
   : console.log("not divisible by both", n1, "and", n2);
 
 var reg_username = "a";
-var reg_password = 12;
+var reg_password = "12";
 var loggedIn_username = "a";
 var loggedIn_password = "12";
 reg_username == loggedIn_username && reg_password == loggedIn_password
