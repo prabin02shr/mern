@@ -48,6 +48,7 @@ conditional statement in js
     else{
     body of else
     }
+    
 5. switch
 */
 
