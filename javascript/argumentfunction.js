@@ -31,13 +31,13 @@ function welcome(details) {
     console.log('hi ' + details.name + " welcome to " + details.address + " !!! " + details.email + " " + details.phone + " " + details.status)
 }
 
-var details = {
-    name: 'sujal',
-    phone: '98234232',
-    email: 'sujal@gmail.com',
-    address: 'vedu',
-    status: 'active'
-}
+// var details = {
+//     name: 'sujal',
+//     phone: '98234232',
+//     email: 'sujal@gmail.com',
+//     address: 'vedu',
+//     status: 'active'
+// }
 
 var det = ['sujal', '9823423234', 'sujal@gmail.com', 'vedu', 'active']
 

@@ -10,28 +10,45 @@
 
     <!-- light on image => https://img.freepik.com/premium-photo/magnificent-light-bulb-isolated-white-background_787273-39605.jpg?size=626&ext=jpg -->
 
-    
-    <div style="text-align: center;">
-        <img
-      src="https://img.freepik.com/free-vector/realistic-light-bulb-isolated_1284-41741.jpg?size=626&ext=jpg"
-      id="bulbImage"
-      alt=""
-    />
-    <br><br>
+    <div style="text-align: center">
+      <img
+        src="https://img.freepik.com/free-vector/realistic-light-bulb-isolated_1284-41741.jpg?size=626&ext=jpg"
+        id="bulbImage"
+        alt=""
+      />
+      <br /><br />
       <button id="onOff" onclick="lightOn()">on</button>
       <!-- <button onclick="lightOff()">off</button> -->
     </div>
-
+    <br>
+    <div style="text-align: center;">
+      <img src="./aa.png" id="bulb" alt="" />
+      <br /><br />
+      <button id="switch" onclick="OnOff()">on</button>
+    </div>
     <script>
       function lightOn() {
-        document.getElementById("bulbImage").src =
-          "https://img.freepik.com/premium-photo/magnificent-light-bulb-isolated-white-background_787273-39605.jpg?size=626&ext=jpg";
-          document.getElementById("onOff").innerText= "off"
+        var sign = String(document.getElementById("onOff").innerText);
+        if (sign === "on") {
+          document.getElementById("bulbImage").src =
+            "https://img.freepik.com/premium-photo/magnificent-light-bulb-isolated-white-background_787273-39605.jpg?size=626&ext=jpg";
+          document.getElementById("onOff").innerText = "off";
+        } else {
+          document.getElementById("bulbImage").src =
+            "https://img.freepik.com/free-vector/realistic-light-bulb-isolated_1284-41741.jpg?size=626&ext=jpg";
+          document.getElementById("onOff").innerText = "on";
+        }
       }
 
-      function lightOff() {
-        document.getElementById("bulbImage").src =
-          "https://img.freepik.com/free-vector/realistic-light-bulb-isolated_1284-41741.jpg?size=626&ext=jpg";
+      function OnOff() {
+        var status = String(document.getElementById("switch").innerText);
+        if (status === "on") {
+          document.getElementById("bulb").src = "./aa1.png";
+          document.getElementById("switch").innerText = "off";
+        } else {
+          document.getElementById("bulb").src = "./aa.png";
+          document.getElementById("switch").innerText = "on";
+        }
       }
     </script>
   </body>
