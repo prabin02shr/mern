@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>light on off</title>
+  </head>
+  <body>
+    <!-- ligth off image => https://img.freepik.com/free-vector/realistic-light-bulb-isolated_1284-41741.jpg?size=626&ext=jpg -->
+
+    <!-- light on image => https://img.freepik.com/premium-photo/magnificent-light-bulb-isolated-white-background_787273-39605.jpg?size=626&ext=jpg -->
+
+    
+    <div style="text-align: center;">
+        <img
+      src="https://img.freepik.com/free-vector/realistic-light-bulb-isolated_1284-41741.jpg?size=626&ext=jpg"
+      id="bulbImage"
+      alt=""
+    />
+    <br><br>
+      <button id="onOff" onclick="lightOn()">on</button>
+      <!-- <button onclick="lightOff()">off</button> -->
+    </div>
+
+    <script>
+      function lightOn() {
+        document.getElementById("bulbImage").src =
+          "https://img.freepik.com/premium-photo/magnificent-light-bulb-isolated-white-background_787273-39605.jpg?size=626&ext=jpg";
+          document.getElementById("onOff").innerText= "off"
+      }
+
+      function lightOff() {
+        document.getElementById("bulbImage").src =
+          "https://img.freepik.com/free-vector/realistic-light-bulb-isolated_1284-41741.jpg?size=626&ext=jpg";
+      }
+    </script>
+  </body>
+</html>
+<!-- dark/derault mode
+ password show hide -->

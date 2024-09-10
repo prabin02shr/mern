@@ -9,6 +9,7 @@
     <h1 class="random">Document Object Model</h1>
     <h1 class="random">Document Object Model</h1>
     <img src="" alt="" id="image">
+    <div id="division">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea non in veritatis id sequi, animi qui nam corrupti ratione harum quis omnis repudiandae mollitia repellat dicta eius quisquam nihil ab.</div>
     <script>
       /*
         DOM => document object model
@@ -34,8 +35,12 @@
       //   console.log(selectClass);
       selectClass.textContent = "hello from class";
 
+      document.getElementById("division").style.width = "480px"
+      document.getElementById("division").style.height = "480px"
+      document.getElementById("division").style.backgroundColor = "red"
 
-      document.getElementById("image").src = "https://mir-s3-cdn-cf.behance.net/project_modules/hd/d95c1f148207527.62d1246c25004.jpg"
+
+      // document.getElementById("image").src = "https://mir-s3-cdn-cf.behance.net/project_modules/hd/d95c1f148207527.62d1246c25004.jpg"
     </script>
   </body>
 </html>
