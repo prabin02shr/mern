@@ -1,0 +1,94 @@
+<html></html>
+
+<head>
+    <title>image slider</title>
+    <style>
+        p {
+            font-size: 30px;
+        }
+
+        .parent {
+            margin: auto;
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            position: relative;
+        }
+
+        img {
+            width: 500px;
+            height: 500px;
+        }
+
+        .previous {
+            position: absolute;
+            top: 40%;
+        }
+
+        .next {
+            position: absolute;
+            right: 0;
+            top: 40%;
+        }
+
+        .previous:hover {
+            color: red;
+            cursor: pointer;
+        }
+
+        .next:hover {
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <img id="slider_image" src="https://imgs.search.brave.com/4hVSiiJ8KQpDgrfYZEv2XLRm_mkgf50mTQJzFhFx040/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9mb3Nz/aWwuc2NlbmU3LmNv/bS9pcy9pbWFnZS9G/b3NzaWxQYXJ0bmVy/cy9BWDI2MDBfbWFp/bj8kc2ZjY19mb3Nf/bWVkaXVtJA"
+            alt="">
+        <p class="previous" onclick="previous()">&lt;</p>
+        <p class="next" onclick="next()">&gt;</p>
+    </div>
+
+    <script>
+        var image_collection = [
+            'https://imgs.search.brave.com/4hVSiiJ8KQpDgrfYZEv2XLRm_mkgf50mTQJzFhFx040/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9mb3Nz/aWwuc2NlbmU3LmNv/bS9pcy9pbWFnZS9G/b3NzaWxQYXJ0bmVy/cy9BWDI2MDBfbWFp/bj8kc2ZjY19mb3Nf/bWVkaXVtJA',
+
+            'https://i.pinimg.com/550x/9a/60/ae/9a60aefceef79287bef22d02dcd35729.jpg',
+
+            'https://i.pinimg.com/originals/d9/90/3d/d9903d50d17190efec67a8d245c89a58.jpg',
+
+            'https://i.pinimg.com/736x/0f/b5/b5/0fb5b5cb55c86182571a48f003f1789d.jpg',
+
+            'https://i.pinimg.com/originals/c2/d4/ca/c2d4ca0182d13bc496678e3404049c53.jpg',
+
+            'https://i.pinimg.com/736x/96/cb/e3/96cbe315b46b68600326d535e97fac25.jpg',
+
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRzAL9OH_UtEIBKwskRsf5jgfqzH3rq-ktIA&s',
+        ]
+
+        var index = 0
+        function next() {
+            document.getElementById("slider_image").src = image_collection[index]
+            index++
+            if (index === image_collection.length){
+                index= 0
+            }
+        }
+
+        setInterval(next,2000)
+
+        function previous(){
+            index--;
+            if(index<0){
+                index= image_collection - 1
+            }
+            document.getElementById("slide_image").src = image_collection[index]
+          
+        }
+    </script>
+
+</body>
+
+</html>
