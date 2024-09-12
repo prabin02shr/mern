@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+  </head>
+  <body>
+    <form action="">
+      <label for="username">Username</label>
+      <input type="text" name="" id="username" onkeyup="usernameValidation()" />
+      <span id="username_error"></span>
+      <br /><br />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      function usernameValidation() {
+        var username = document.getElementById("username").value;
+        if (username === "") {
+          document.getElementById("username_error").innerHTML =
+            "*required field";
+          document.getElementById("username_error").style.color = "red";
+        } else if (username.match(/[0-9]+/)) {
+          document.getElementById("username_error").innerHTML =
+            "*username must not contain numbers";
+          document.getElementById("username_error").style.color = "red";
+        } else if (username.match(/[!@#$%^&*]+/)) {
+          document.getElementById("username_error").innerHTML =
+            "*username must not contain special characters";
+          document.getElementById("username_error").style.color = "red";
+        } else if (username.length < 4) {
+            displayMsg("username_error", "red", "*username must contain atleast 4 characters");
+        } else {
+          displayMsg("username_error", "green", "valid username");
+        }
+      }
+
+      function displayMsg(id, color, msg) {
+        document.getElementById(id).innerHTML = msg;
+        document.getElementById(id).style.color = color;
+      }
+
+      //   Regular Expression
+    </script>
+  </body>
+</html>
