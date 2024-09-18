@@ -70,7 +70,7 @@ function readFile(filename) {
 }
 
 function renameFile(oldfile, newfilename){
-    return new Promise(function(resolve, reject{
+    return new Promise(function(resolve, reject){
         fs.rename("./contents" + oldfile, "./contents"+ newfilename, function(err, done){
             if(err){
                 reject(err)
@@ -78,7 +78,7 @@ function renameFile(oldfile, newfilename){
                 resolve(done)
             }
         })
-    }))
+    })
 }
 
 
@@ -86,4 +86,5 @@ function renameFile(oldfile, newfilename){
 module.exports = {
   mywrite: myWrite,
   readFile: readFile,
+  renameFile: renameFile,
 };
