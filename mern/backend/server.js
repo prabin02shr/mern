@@ -32,6 +32,7 @@ var server = http.createServer(function (request, response) {
   //   console.log("welcome to node js server");
   console.log("request method is: ", request.method);
   console.log("request url is: ", request.url);
+  console.log("request url is: ", request.url.split("/"));
   //   regardless of any method and url this call is excuted
   //   response.end("welcome to node js server");
   //   response.end("welcome to node js server again");
@@ -47,14 +48,16 @@ var server = http.createServer(function (request, response) {
     response.end("hi from register page");
   } else if (request.url === "/write") {
     // file write
-    fileop
-      .mywrite("node.js", "hi from node js")
-      .then(function (done) {
-        response.end(done);
-      })
-      .catch(function (err) {
-        response.end(err);
-      });
+    // var filename= request.url.split("/")[2]
+    // var content = request.url.split("/")[3]
+    // fileop 
+    //   .mywrite(filename, content)
+    //   .then(function (done) {
+    //     response.end(done);
+    //   })
+    //   .catch(function (err) {
+    //     response.end(err);
+    //   });
   } else if (request.url === "/read") {
     response.end("file read");
   } else if (request.url === "/rename") {
@@ -62,7 +65,17 @@ var server = http.createServer(function (request, response) {
   } else if (request.url === "/delete") {
     response.end("file deleted");
   } else {
-    response.end("page not found");
+    // response.end("page not found");
+    var filename= request.url.split("/")[2]
+    var content = request.url.split("/")[3]
+    fileop
+      .mywrite(filename, content)
+      .then(function (done) {
+        response.end(done);
+      })
+      .catch(function (err) {
+        response.end(err);
+      });
   }
 });
 
