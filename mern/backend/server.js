@@ -87,3 +87,17 @@ server.listen(8000, "localhost", function (err, done) {
     console.log("server listening at port 8000");
   }
 });
+
+
+
+
+// framework
+// sail js
+// hapi
+// express
+
+// MERN
+// mongodb
+// express
+// react
+// node
