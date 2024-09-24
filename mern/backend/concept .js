@@ -18,4 +18,9 @@ types of middlewar:
 4. inbuilt middleware
 5. error handling middlware
 
+MVC
+Model
+View
+Controller
+
 */

@@ -126,18 +126,3 @@ app.listen(port, function (err, done) {
   }
 });
 
-// middleware
-/*
-
-function(res, res, next){}
-
-app.use(middleware)
-
-app.use(funtion(req, res, next){})
-
-=> middleware is a function with has access to request object, response object and next middlware function refrence
-=> middleware always came int action in between req-res cycle
-=> middleware can modify request object
-
-
-*/
