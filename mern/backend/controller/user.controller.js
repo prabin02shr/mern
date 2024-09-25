@@ -3,6 +3,15 @@ const router = require("express").Router();
 // const express = require("express");
 // const router = express.Router();
 
+router.get("/myfile", function (req, res, next) {
+  require("fs").readFile("hello.txt", function (err, done) {
+    if (err) {
+      next(err);
+    }
+    res.json(done.toString());
+  });
+});
+
 // /user/view
 router.get("/view", function (req, res, next) {
   res.json({
