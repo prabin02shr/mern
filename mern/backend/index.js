@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const authRouter = require("./controller/auth.controller");
 const userRouter = require("./controller/user.controller");
 const path = require("path");
+const isAdmin = require("./middleware/isAdmin")
 
 // console.log("file directory: ", __dirname);
 // console.log("root directory: ", process.cwd());
@@ -23,7 +24,7 @@ app.use(express.static("uploads"));
 app.use("/file", express.static(path.join(process.cwd() + "/uploads")));
 
 app.use("/auth", authRouter);
-app.use("/user", userRouter);
+app.use("/user", isAdmin, userRouter);
 
 app.get("*", function (req, res, next) {
   next({

@@ -23,4 +23,44 @@ Model
 View
 Controller
 
+
+database
+container
+harddrive partion
+
+database mnagement system(DBMS)
+1. relational dbms
+2. distributed dbms
+
+relational dbms:
+=> table based design
+=> tuple/row => each record inside a table is tuple/row
+=> schema base design
+=> not scaleable
+=> sql(structure query language) database
+=> my-sql, postgres, sqllite
+
+distributed dbms:
+=> document based design
+=> document is valid json(javascript object notation)
+=> collection
+=> no schema based
+=> highly scaleable
+=> no-sql(not only sql)
+=> mongodb, redis, cosmos
+
+entity
+LMS => user, book
+user_id:
+user_name:
+ER diagram
+
+
+mongodb:
+    commands:
+    1. show dbs
+    2. use dbname
+    3. show collections
+    4. db.name.insert()
+
 */
