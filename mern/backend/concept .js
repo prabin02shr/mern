@@ -49,6 +49,19 @@ distributed dbms:
 => no-sql(not only sql)
 => mongodb, redis, cosmos
 
+
+
+
+mongodb
+mongodbshell
+
+
+CRUD:
+c => create(post)
+r => read(get)
+u => update(put)
+d => delete(delete)
+
 entity
 LMS => user, book
 user_id:
@@ -61,6 +74,16 @@ mongodb:
     1. show dbs
     2. use dbname
     3. show collections
-    4. db.name.insert()
+
+    Insert:
+     db.name.insertOne({key:'value'})
+
+    Get view:
+     db.name.find()
+     db.name.find().sort({_id:-1})
+     db.name.find().count()
+     db.name.find().limit(limitcount)
+     db.name.find().skip(skipcount)
+
 
 */
