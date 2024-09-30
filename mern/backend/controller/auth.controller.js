@@ -14,10 +14,13 @@ router.get("/login", function (req, res, next) {
 //  /auth/login
 router.post("/login", function (req, res, next) {});
 
-
 // /auth/register
-router.post("/register", function (req, res, next) {});
-
-
+router.post("/register", function (req, res, next) {
+  console.log("data is: ", req.body);
+  res.json({
+    registeredUser:req.body,
+    msg:req.body.username+" registered sucessfully"
+})
+});
 
 module.exports = router;

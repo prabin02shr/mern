@@ -69,21 +69,31 @@ user_name:
 ER diagram
 
 
-mongodb:
+## Mongodb:
     commands:
     1. show dbs
     2. use dbname
     3. show collections
 
-    Insert:
+    Insert(post):
      db.name.insertOne({key:'value'})
 
-    Get view:
+    View(get):
      db.name.find()
-     db.name.find().sort({_id:-1})
+     db.name.find().sort({condition})
      db.name.find().count()
      db.name.find().limit(limitcount)
      db.name.find().skip(skipcount)
 
+    Update(put):
+     db.name.updateOne({queryBuilder},{$set:{updateLogic}})
+
+    Delete(delete):
+     db.dbname.deleteOne({queryBuilder})
+
+
+client:
+req.params
+req.query
 
 */
