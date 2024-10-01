@@ -1,5 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const mongodb = require("mongodb");
+const mongoClient = mongodb.MongoClient;
+
+const connectionURL = "mongodb://localhost:27017";
+const dbname = "group7db";
 
 // console.log("file directory in auth : ", __dirname);
 // console.log("root directory in auth : ", process.cwd());
@@ -17,10 +22,31 @@ router.post("/login", function (req, res, next) {});
 // /auth/register
 router.post("/register", function (req, res, next) {
   console.log("data is: ", req.body);
-  res.json({
-    registeredUser:req.body,
-    msg:req.body.username+" registered sucessfully"
-})
+
+  // db stuff
+  mongoClient
+    .connect(connectionURL)
+    .then(function (client) {
+      var database = client.db(dbname);
+      var collection = database.collection("user");
+      collection
+        .insertOne(req.body)
+        .then(function (newUser) {
+          res.json({
+            registeredUser: req.body,
+            msg:
+              "Hi " +
+              req.body.username +
+              " Your account has been created sucessfully",
+          });
+        })
+        .catch(function (err) {
+          return next(err);
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
 });
 
 module.exports = router;

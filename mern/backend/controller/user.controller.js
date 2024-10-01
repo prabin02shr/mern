@@ -1,4 +1,8 @@
 const router = require("express").Router();
+const mongdb = require("mongodb");
+const mongoClient = mongdb.MongoClient;
+const connectionURL = "mongodb://localhost:27017";
+const dbname = "group7db";
 
 // const express = require("express");
 // const router = express.Router();
@@ -14,9 +18,24 @@ router.get("/myfile", function (req, res, next) {
 
 // /user/view
 router.get("/view", function (req, res, next) {
-  res.json({
-    msg: "view all user",
-  });
+  mongoClient
+    .connect(connectionURL)
+    .then(function (client) {
+      var database = client.db(dbname);
+      var collection = database.collection("user");
+      collection
+        .find()
+        .toArray()
+        .then(function(users){
+          res.json(users)
+        })
+        .catch(function (err) {
+          return next(err);
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
 });
 
 // /user/

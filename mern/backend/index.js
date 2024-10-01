@@ -18,7 +18,7 @@ app.use(morgan("dev"));
 
 // json
 // parser for application/json
-app.use(express.json());
+// app.use(express.json());
 
 // parser for x-www-form-urlencoded
 app.use(express.urlencoded({
@@ -33,7 +33,7 @@ app.use(express.static("uploads"));
 app.use("/file", express.static(path.join(process.cwd() + "/uploads")));
 
 app.use("/auth", authRouter);
-app.use("/user", isAdmin, userRouter);
+app.use("/user", userRouter);
 
 app.get("*", function (req, res, next) {
   next({
