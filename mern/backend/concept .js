@@ -96,4 +96,20 @@ client:
 req.params
 req.query
 
+mongodb
+schema(structure)
+data filter
+validation
+
+ORM => object relational mapping
+ODM => object document modelling
+
+mongoose
+advantages of mongoose:
+1. schema based design
+2. indexing
+    required, unique
+3. middleware
+4. data type
+
 */

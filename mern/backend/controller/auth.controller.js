@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongodb = require("mongodb");
+const UserModel = require("../model/user.model");
 const mongoClient = mongodb.MongoClient;
 
 const connectionURL = "mongodb://localhost:27017";
@@ -43,6 +44,32 @@ router.post("/register", function (req, res, next) {
         .catch(function (err) {
           return next(err);
         });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+});
+
+router.post("./signup", function (req, res, next) {
+  const user = new UserModel();
+  // user is now mongoose object
+  user.username = req.body.username;
+  user.email = req.body.email;
+  user.password = req.body.password;
+  user.dob = req.body.date_of_birth;
+  user.gender = req.body.gender;
+
+  if (user.address) {
+    user.address = {};
+  }
+
+  user.adress.temporaryAddress = req.body.temporary_address;
+  user.adress.permanetnAddress = req.body.permanent_address;
+
+  user
+    .save()
+    .then(function (newuser) {
+      res.json(newuser);
     })
     .catch(function (err) {
       return next(err);

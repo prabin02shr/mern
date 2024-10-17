@@ -6,12 +6,14 @@ const userRouter = require("./controller/user.controller");
 const path = require("path");
 const isAdmin = require("./middleware/isAdmin")
 
+
 // console.log("file directory: ", __dirname);
 // console.log("root directory: ", process.cwd());
 
 // app is now entire express framwork
 
 const port = 8000;
+require("./config/db")
 
 // third party middleware
 app.use(morgan("dev"));
