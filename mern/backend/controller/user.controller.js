@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const mongodb = require("mongodb");
+const UserModel = require("../model/user.model");
 const mongoClient = mongodb.MongoClient;
 const connectionURL = "mongodb://localhost:27017";
 const dbname = "group7db";
@@ -17,26 +18,64 @@ router.get("/myfile", function (req, res, next) {
   });
 });
 
-// /user/view
-router.get("/view", function (req, res, next) {
-  mongoClient
-    .connect(connectionURL)
-    .then(function (client) {
-      var database = client.db(dbname);
-      var collection = database.collection("user");
-      collection
-        .find()
-        .toArray()
-        .then(function (users) {
-          res.json(users);
-        })
-        .catch(function (err) {
-          return next(err);
+// get single user
+// /user/user_details/
+router.get("/user_details/:user_id", function (req, res, next) {
+  UserModel.find({
+    _id: req.params.user_id,
+  })
+    .then(function (user) {
+      if (!user[0]) {
+        return next({
+          msg: "User not found",
+          status: 404,
         });
+      }
+      res.json(user[0]);
     })
     .catch(function (err) {
       return next(err);
     });
+});
+
+// /user/view
+// get all user
+router.get("/view", function (req, res, next) {
+  var users = UserModel.find()
+    // .sort({ _id: -1 })
+    // .limit(2)
+    // .skip(2)
+    .then(function (userList) {
+      if (!userList) {
+        return next({
+          msg: "No users found!!!",
+          status: 404,
+        });
+      }
+      res.json(userList);
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+
+  //   mongoClient
+  //     .connect(connectionURL)
+  //     .then(function (client) {
+  //       var database = client.db(dbname);
+  //       var collection = database.collection("user");
+  //       collection
+  //         .find()
+  //         .toArray()
+  //         .then(function (users) {
+  //           res.json(users);
+  //         })
+  //         .catch(function (err) {
+  //           return next(err);
+  //         });
+  //     })
+  //     .catch(function (err) {
+  //       return next(err);
+  //     });
 });
 
 // /user/
@@ -50,7 +89,7 @@ router
   // .post(function (req, res, next) {
   //   res.json({});
   // })
-  
+
   .put(function (req, res, next) {
     mongoClient
       .connect(connectionURL)

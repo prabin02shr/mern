@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
   },
   address: {
     temporaryAddress: [String],
-    permanentAdress: {
+    permanentAddress: {
       type: String,
       required: true,
     },
@@ -37,7 +37,11 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+},
+{
+  timestamps: true
 });
 
-const UserModel = mongoose.Model("user", UserSchema);
+
+const UserModel = mongoose.model("user", UserSchema);
 module.exports = UserModel;

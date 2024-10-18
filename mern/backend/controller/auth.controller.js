@@ -50,26 +50,43 @@ router.post("/register", function (req, res, next) {
     });
 });
 
-router.post("./signup", function (req, res, next) {
-  const user = new UserModel();
-  // user is now mongoose object
-  user.username = req.body.username;
-  user.email = req.body.email;
-  user.password = req.body.password;
-  user.dob = req.body.date_of_birth;
-  user.gender = req.body.gender;
+// /auth/signup
+router.post("/signup", function (req, res, next) {
+  UserModel.find({
+    email: req.body.email,
+  })
+    .then(function (user) {
+      if (user[0]) {
+        return next({
+          msg: "Email Already Exist/ User already registered",
+          status: 404,
+        });
+      }
+      if (!user[0]) {
+        const user = new UserModel();
+        // user is now mongoose object
+        user.username = req.body.username;
+        user.email = req.body.email;
+        user.password = req.body.password;
+        user.dob = req.body.date_of_birth;
+        user.gender = req.body.gender;
 
-  if (user.address) {
-    user.address = {};
-  }
+        if (user.address) {
+          user.address = {};
+        }
 
-  user.adress.temporaryAddress = req.body.temporary_address;
-  user.adress.permanetnAddress = req.body.permanent_address;
+        user.address.temporaryAddress = req.body.temporary_address.split(",");
+        user.address.permanentAddress = req.body.permanent_address;
 
-  user
-    .save()
-    .then(function (newuser) {
-      res.json(newuser);
+        user
+          .save()
+          .then(function (newuser) {
+            res.json(newuser);
+          })
+          .catch(function (err) {
+            return next(err);
+          });
+      }
     })
     .catch(function (err) {
       return next(err);
