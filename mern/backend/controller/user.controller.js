@@ -91,30 +91,77 @@ router
   // })
 
   .put(function (req, res, next) {
-    mongoClient
-      .connect(connectionURL)
-      .then(function (client) {
-        var database = client.db(dbname);
-        var collection = database.collection("user");
-        collection
-          .updateOne(
-            {
-              _id: new OId(req.params.user_id),
-            },
-            {
-              $set: req.body,
-            }
-          )
-          .then(function (updateUser) {
-            res.json(updateUser);
+    UserModel.findOne({
+      _id: req.params.user_id,
+    })
+      .then(function (user) {
+        if (!user) {
+          return next({
+            msg: "User Not Found",
+            status: 404,
+          });
+        }
+        if (user) {
+          if (req.body.username) {
+            user.username = req.body.username;
+          }
+          if (req.body.dob) {
+            user.dob = req.body.date_of_birth;
+          }
+          if (req.body.gender) {
+            user.gender = req.body.gender;
+          }
+          if (!user.address) {
+            user.address = {};
+          }
+          if (req.body.temporary_Address) {
+            user.address.temporaryAddress = req.body.temporary_Address;
+          }
+          if (req.body.permanent_Address) {
+            user.address.permanentAddress = req.body.permanent_Address;
+          }
+        }
+        user
+          .save()
+          .then(function (updatedUser) {
+            res.json({
+              msg: "User Updated Sucessfully!!!",
+              updatedUser: updatedUser,
+              status: 200,
+            });
           })
           .catch(function (err) {
             return next(err);
           });
       })
       .catch(function (err) {
-        return err;
+        return next(err);
       });
+
+    // mongoClient
+    //   .connect(connectionURL)
+    //   .then(function (client) {
+    //     var database = client.db(dbname);
+    //     var collection = database.collection("user");
+    //     collection
+    //       .updateOne(
+    //         {
+    //           _id: new OId(req.params.user_id),
+    //         },
+    //         {
+    //           $set: req.body,
+    //         }
+    //       )
+    //       .then(function (updateUser) {
+    //         res.json(updateUser);
+    //       })
+    //       .catch(function (err) {
+    //         return next(err);
+    //       });
+    //   })
+    //   .catch(function (err) {
+    //     return err;
+    //   });
   })
 
   .delete(function (req, res, next) {
