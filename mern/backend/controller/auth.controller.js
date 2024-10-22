@@ -3,9 +3,11 @@ const router = express.Router();
 const mongodb = require("mongodb");
 const UserModel = require("../model/user.model");
 const mongoClient = mongodb.MongoClient;
+const mapUser = require("./../helpers/mapUser");
 
 const connectionURL = "mongodb://localhost:27017";
 const dbname = "group7db";
+const passwordhash= require("password-hash")
 
 // console.log("file directory in auth : ", __dirname);
 // console.log("root directory in auth : ", process.cwd());
@@ -65,20 +67,26 @@ router.post("/signup", function (req, res, next) {
       if (!user[0]) {
         const user = new UserModel();
         // user is now mongoose object
-        user.username = req.body.username;
-        user.email = req.body.email;
-        user.password = req.body.password;
-        user.dob = req.body.date_of_birth;
-        user.gender = req.body.gender;
 
-        if (user.address) {
-          user.address = {};
+        // user.username = req.body.username;
+        // user.dob = req.body.date_of_birth;
+        // user.gender = req.body.gender;
+
+        // if (user.address) {
+        //   user.address = {};
+        // }
+
+        // user.address.temporaryAddress = req.body.temporary_address.split(",");
+        // user.address.permanentAddress = req.body.permanent_address;
+
+        var new_user = mapUser(user, req.body);
+        if (req.body.email) {
+          new_user.email = req.body.email;
         }
-
-        user.address.temporaryAddress = req.body.temporary_address.split(",");
-        user.address.permanentAddress = req.body.permanent_address;
-
-        user
+        if (req.body.password) {
+          new_user.password = passwordhash.generate(req.body.password);
+        }
+        new_user
           .save()
           .then(function (newuser) {
             res.json(newuser);

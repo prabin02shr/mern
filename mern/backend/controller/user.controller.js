@@ -5,6 +5,7 @@ const mongoClient = mongodb.MongoClient;
 const connectionURL = "mongodb://localhost:27017";
 const dbname = "group7db";
 const OId = mongodb.ObjectId;
+const mapUser = require("./../helpers/mapUser");
 
 // const express = require("express");
 // const router = express.Router();
@@ -42,7 +43,7 @@ router.get("/user_details/:user_id", function (req, res, next) {
 // get all user
 router.get("/view", function (req, res, next) {
   var users = UserModel.find()
-    // .sort({ _id: -1 })
+    .sort({ _id: -1 })
     // .limit(2)
     // .skip(2)
     .then(function (userList) {
@@ -91,9 +92,10 @@ router
   // })
 
   .put(function (req, res, next) {
-    UserModel.findOne({
-      _id: req.params.user_id,
-    })
+    // UserModel.findOne({
+    //   _id: req.params.user_id,
+    // })
+    UserModel.findById(req.params.user_id)
       .then(function (user) {
         if (!user) {
           return next({
@@ -101,38 +103,53 @@ router
             status: 404,
           });
         }
+
         if (user) {
-          if (req.body.username) {
-            user.username = req.body.username;
-          }
-          if (req.body.dob) {
-            user.dob = req.body.date_of_birth;
-          }
-          if (req.body.gender) {
-            user.gender = req.body.gender;
-          }
-          if (!user.address) {
-            user.address = {};
-          }
-          if (req.body.temporary_Address) {
-            user.address.temporaryAddress = req.body.temporary_Address;
-          }
-          if (req.body.permanent_Address) {
-            user.address.permanentAddress = req.body.permanent_Address;
-          }
-        }
-        user
-          .save()
-          .then(function (updatedUser) {
-            res.json({
-              msg: "User Updated Sucessfully!!!",
-              updatedUser: updatedUser,
-              status: 200,
+          //   if (req.body.username) {
+          //     user.username = req.body.username;
+          //   }
+          //   if (req.body.dob) {
+          //     user.dob = req.body.date_of_birth;
+          //   }
+          //   if (req.body.gender) {
+          //     user.gender = req.body.gender;
+          //   }
+          //   if (!user.address) {
+          //     user.address = {};
+          //   }
+          //   if (req.body.temporary_Address) {
+          //     user.address.temporaryAddress = req.body.temporary_Address;
+          //   }
+          //   if (req.body.permanent_Address) {
+          //     user.address.permanentAddress = req.body.permanent_Address;
+          //   }
+
+          var updateUser = mapUser(user, req.body);
+          updateUser.role = req.body.role;
+          updateUser
+            .save()
+            .then(function (updatedUser) {
+              res.json({
+                msg: "User Updated Sucessfully",
+                status: 200,
+              });
+            })
+            .catch(function (err) {
+              return next(err);
             });
-          })
-          .catch(function (err) {
-            return next(err);
-          });
+        }
+        // user
+        //   .save()
+        //   .then(function (updatedUser) {
+        //     res.json({
+        //       msg: "User Updated Sucessfully!!!",
+        //       updatedUser: updatedUser,
+        //       status: 200,
+        //     });
+        //   })
+        //   .catch(function (err) {
+        //     return next(err);
+        //   });
       })
       .catch(function (err) {
         return next(err);
@@ -165,19 +182,37 @@ router
   })
 
   .delete(function (req, res, next) {
-    mongoClient
-      .connect(connectionURL)
-      .then(function (client) {
-        var database = client.db(dbname);
-        var collection = database.collection("user");
-        collection
-          .deleteOne({ _id: new OId(req.params.user_id) })
-          .then(function (deleteUser) {
-            res.json(deleteUser);
-          })
-          .catch(function (err) {
-            return next(err);
+    // mongoClient
+    //   .connect(connectionURL)
+    //   .then(function (client) {
+    //     var database = client.db(dbname);
+    //     var collection = database.collection("user");
+    //     collection
+    //       .deleteOne({ _id: new OId(req.params.user_id) })
+    //       .then(function (deleteUser) {
+    //         res.json(deleteUser);
+    //       })
+    //       .catch(function (err) {
+    //         return next(err);
+    //       });
+    //   })
+    //   .catch(function (err) {
+    //     return next(err);
+    //   });
+
+    UserModel.findByIdAndDelete(req.params.user_id)
+      .then(function (deletedUser) {
+        if (!deletedUser) {
+          return next({
+            msg: "User Not Found!!!",
+            status: 404,
           });
+        }
+          res.json({
+            msg: "User Deleted Sucessfully!!!",
+            status: 200,
+          });
+        
       })
       .catch(function (err) {
         return next(err);
