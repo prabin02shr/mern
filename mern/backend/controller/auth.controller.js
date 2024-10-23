@@ -7,20 +7,50 @@ const mapUser = require("./../helpers/mapUser");
 
 const connectionURL = "mongodb://localhost:27017";
 const dbname = "group7db";
-const passwordhash= require("password-hash")
+const passwordhash = require("password-hash");
 
 // console.log("file directory in auth : ", __dirname);
 // console.log("root directory in auth : ", process.cwd());
 
-// /auth/login
-router.get("/login", function (req, res, next) {
-  res.json({
-    msg: "from login page",
-  });
-});
-
 //  /auth/login
-router.post("/login", function (req, res, next) {});
+router.post("/login", function (req, res, next) {
+  UserModel.findOne({
+    email: req.body.email,
+  })
+    .then(function (user) {
+      if (!user) {
+        return next({
+          msg: "Invalid Email!!!",
+          status: 404,
+        });
+      }
+      if (user.isActivated) {
+        return next({
+          msg: "Please Activate Your Account/ Contact System Adminstrator",
+          status: 404,
+        });
+      }
+      if (user) {
+        var isMatched = passwordhash.verify(req.body.password, user.password);
+        if (!isMatched) {
+          return next({
+            msg: "Invalid Password!!!",
+            status: 404,
+          });
+        }
+        if (isMatched) {
+          res.json({
+            LoggedInUser: user,
+            msg: "Logged In Sucessfully!!!",
+            status: 200,
+          });
+        }
+      }
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+});
 
 // /auth/register
 router.post("/register", function (req, res, next) {

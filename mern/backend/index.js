@@ -4,8 +4,7 @@ const morgan = require("morgan");
 const authRouter = require("./controller/auth.controller");
 const userRouter = require("./controller/user.controller");
 const path = require("path");
-const isAdmin = require("./middleware/isAdmin")
-
+const isAdmin = require("./middleware/isAdmin");
 
 // console.log("file directory: ", __dirname);
 // console.log("root directory: ", process.cwd());
@@ -13,7 +12,7 @@ const isAdmin = require("./middleware/isAdmin")
 // app is now entire express framwork
 
 const port = 8000;
-require("./config/db")
+require("./config/db");
 
 // third party middleware
 app.use(morgan("dev"));
@@ -23,9 +22,11 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // parser for x-www-form-urlencoded
-app.use(express.urlencoded({
-  extended:true
-}))
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
 // inbuilt middleware
 // file
@@ -60,7 +61,9 @@ app.use(function (req, res, next) {
 // error handling middlware
 app.use(function (err, req, res, next) {
   res.json({
+    error: "From error handling middleware",
     msg: err.msg || err,
+    status: err.staus || 400,
   });
 });
 
