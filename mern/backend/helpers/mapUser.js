@@ -20,5 +20,8 @@ module.exports = function (user, reqData) {
   if (reqData.permanent_Address) {
     user.address.permanentAddress = reqData.permanent_Address;
   }
+  if (reqData.img) {
+    user.image = reqData.img;
+  }
   return user;
 };
