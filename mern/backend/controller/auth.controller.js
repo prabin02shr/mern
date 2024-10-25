@@ -22,7 +22,18 @@ const uploader = multer.diskStorage({
     cb(null, path.join(process.cwd(), "uploads/images"));
   },
 });
-const upload = multer({ storage: uploader });
+
+const typeFilter = (req, file, cb) => {
+  var fileType = req.file.mimetype.split("/")[0];
+  if (fileType !== "image") {
+    req.fileTypeError = true;
+    cb(null, false);
+  } else {
+    cb(null, true);
+  }
+};
+
+const upload = multer({ storage: uploader, fileFilter: TypeError });
 
 // console.log("file directory in auth : ", __dirname);
 // console.log("root directory in auth : ", process.cwd());
@@ -101,6 +112,12 @@ router.post("/register", function (req, res, next) {
 router.post("/signup", upload.single("img"), function (req, res, next) {
   console.log("req.body: ", req.body);
   console.log("req.file: ", req.file);
+  if (req.fileTypeError) {
+    return next({
+      msg: "Invalid file format!!!",
+      status: 404,
+    });
+  }
 
   UserModel.find({
     email: req.body.email,
@@ -127,8 +144,24 @@ router.post("/signup", upload.single("img"), function (req, res, next) {
         // user.address.temporaryAddress = req.body.temporary_address.split(",");
         // user.address.permanentAddress = req.body.permanent_address;
 
-        if(req.file){
-          req.body.img = req.file.originalname
+        // if (req.file) {
+        //   var fileType = req.file.mimetype.split("/")[0]; //image
+        //   if (fileType === "image") {
+        //     req.body.img = req.file.originalname;
+        //   }
+        // }
+
+        if (req.file) {
+          // var fileType = req.file.mimetype.split("/")[0]; //image
+          // if (fileType !== "image") {
+          //   // file remove
+
+          //   return next({
+          //     msg: "Invalid File Format!!!",
+          //     status: 404,
+          //   });
+          // }
+          req.body.img = req.file.originalname;
         }
 
         var new_user = mapUser(user, req.body);
