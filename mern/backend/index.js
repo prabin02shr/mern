@@ -61,7 +61,7 @@ app.use(function (req, res, next) {
 // error handling middlware
 app.use(function (err, req, res, next) {
   res.json({
-    error: "From error handling middleware",
+    // error: "From error handling middleware",
     msg: err.msg || err,
     status: err.staus || 400,
   });
