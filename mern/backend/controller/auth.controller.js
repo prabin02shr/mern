@@ -15,7 +15,7 @@ require("dotenv").config();
 // console.log("file directory in auth : ", __dirname);
 // console.log("root directory in auth : ", process.cwd());
 
-function createToken() {
+function createToken(user) {
   let token;
   token = jwt.sign(
     {
@@ -31,8 +31,9 @@ function createToken() {
 
 //  /auth/login
 router.post("/login", function (req, res, next) {
+  
   UserModel.findOne({
-    email: req.body.email,
+    email: req.body.email
   })
     .then(function (user) {
       if (!user) {
@@ -105,7 +106,7 @@ router.post("/register", function (req, res, next) {
 router.post("/signup", upload.array("img"), function (req, res, next) {
   // single file upload
   // router.post("/signup", upload.single("img"), function (req, res, next) {
-  console.log("req.body: ", req.body);
+  
   console.log("req.file: ", req.files);
   if (req.fileTypeError) {
     return next({
@@ -119,12 +120,15 @@ router.post("/signup", upload.array("img"), function (req, res, next) {
   })
     .then(function (user) {
       if (user[0]) {
+        console.log("req.body if useralreadyexist: ", req.body);
         return next({
           msg: "Email Already Exist/ User already registered",
           status: 404,
         });
       }
       if (!user[0]) {
+        console.log("req.body if user notfound: ", req.body);
+
         const user = new UserModel();
         // user is now mongoose object
 

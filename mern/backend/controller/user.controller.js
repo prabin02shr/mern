@@ -1,4 +1,4 @@
-const router = require("express").Router();
+const router = require("express");
 const mongodb = require("mongodb");
 const UserModel = require("../model/user.model");
 const mongoClient = mongodb.MongoClient;
