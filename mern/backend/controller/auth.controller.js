@@ -31,9 +31,8 @@ function createToken(user) {
 
 //  /auth/login
 router.post("/login", function (req, res, next) {
-  
   UserModel.findOne({
-    email: req.body.email
+    email: req.body.email,
   })
     .then(function (user) {
       if (!user) {
@@ -106,7 +105,7 @@ router.post("/register", function (req, res, next) {
 router.post("/signup", upload.array("img"), function (req, res, next) {
   // single file upload
   // router.post("/signup", upload.single("img"), function (req, res, next) {
-  
+
   console.log("req.file: ", req.files);
   if (req.fileTypeError) {
     return next({

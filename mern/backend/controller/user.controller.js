@@ -1,4 +1,4 @@
-const router = require("express");
+const router = require("express").Router();
 const mongodb = require("mongodb");
 const UserModel = require("../model/user.model");
 const mongoClient = mongodb.MongoClient;
@@ -42,6 +42,7 @@ router.get("/user_details/:user_id", function (req, res, next) {
 // /user/view
 // get all user
 router.get("/view", function (req, res, next) {
+  console.log("Logged in user: ", req.loggedInUser);
   var users = UserModel.find()
     .sort({ _id: -1 })
     // .limit(2)
@@ -208,11 +209,10 @@ router
             status: 404,
           });
         }
-          res.json({
-            msg: "User Deleted Sucessfully!!!",
-            status: 200,
-          });
-        
+        res.json({
+          msg: "User Deleted Sucessfully!!!",
+          status: 200,
+        });
       })
       .catch(function (err) {
         return next(err);
